@@ -101,311 +101,398 @@
     </div><!-- End Page Title -->
 
     <!-- Filter Section -->
-    <section id="filters" class="filters-section py-5">
-      <div class="container">
-        <div class="row">
-          <!-- 學校篩選器 -->
-          <div class="col-md-6 mb-3">
-            <h5 class="text-primary">選擇學校</h5>
-            <select class="form-select" aria-label="學校篩選" id="school-filter">
-              <option selected>所有學校</option>
-              <option value="1">國立台灣大學 (NTU)</option>
-              <option value="2">國立清華大學 (NTHU)</option>
-              <option value="3">國立交通大學 (NCTU)</option>
-              <option value="4">國立政治大學 (NCCU)</option>
-              <option value="5">國立成功大學 (NCKU)</option>
-              <option value="6">其他</option>
-            </select>
-          </div>
+<!-- Filter Section with Accordion -->
+<section id="filters" class="filters-section py-5">
+  <div class="container">
+    <div class="row">
+      
+      <!-- 選擇學校 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-primary">選擇學校</h5>
+        <select class="form-select" aria-label="學校篩選" id="school-filter" onchange="updateColleges()">
+          <option selected value="all">所有學校</option>
+          <option value="NTU">國立台灣大學 (NTU)</option>
+          <option value="NTHU">國立清華大學 (NTHU)</option>
+          <option value="NCTU">國立交通大學 (NCTU)</option>
+          <option value="NCCU">國立政治大學 (NCCU)</option>
+          <option value="NCKU">國立成功大學 (NCKU)</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+      
+      <!-- 選擇學院 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-primary">選擇學院</h5>
+        <select class="form-select" aria-label="學院篩選" id="college-filter" onchange="updateSubjects()">
+          <option selected value="all">所有學院</option>
+          <!-- 學院選項會根據學校選擇動態填充 -->
+        </select>
+      </div>
 
-          <!-- 學科類型篩選器 -->
-          <div class="col-md-6 mb-3">
-            <h5 class="text-primary">選擇學科類型</h5>
-            <select class="form-select" aria-label="學科篩選" id="subject-filter">
-              <option selected>所有學科</option>
-              <option value="science">自然科學</option>
-              <option value="engineering">工程學科</option>
-              <option value="business">商業與管理</option>
-              <option value="arts">人文與社會科學</option>
-              <option value="medicine">醫學與健康科學</option>
-              <option value="it">資訊科學</option>
-            </select>
+      <!-- 選擇學科 -->
+      <div class="col-md-4 mb-3">
+        <h5 class="text-primary">選擇學科</h5>
+        <select class="form-select" aria-label="學科篩選" id="subject-filter">
+          <option selected value="all">所有學科</option>
+          <!-- 學科選項會根據學院選擇動態填充 -->
+        </select>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12 d-flex justify-content-center">
+          <button class="btn btn-primary me-2" onclick="applyFilters()">確定篩選</button>
+          <button class="btn btn-secondary" onclick="systemRecommend()">系統推薦</button>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+   <!-- Courses Section -->
+<section id="courses" class="courses section py-5">
+  <div class="container">
+    <div class="row" id="course-list">
+      
+      <!-- Course 1 --> 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" data-school="NTU" data-subject="engineering">
+        <div class="course-item">
+          <img src="https://picsum.photos/400/300" class="img-fluid" alt="高等工程數學">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <p class="category">工程學科</p>
+              <p class="price">NTU</p>
+            </div>
+            <h3><a href="#">高等工程數學</a></h3>
+            <p class="description">深入學習微積分、線性代數與微分方程等數學工具。</p>
+            <div class="trainer d-flex justify-content-between align-items-center">
+              <div class="trainer-profile d-flex align-items-center">
+                <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                <a href="#" class="trainer-link">張教授</a>
+              </div>
+              <div class="trainer-rank d-flex align-items-center">
+                <i class="bi bi-person user-icon"></i>&nbsp;50
+                &nbsp;&nbsp;
+                <i class="bi bi-heart heart-icon"></i>&nbsp;65
+              </div>
+            </div>
+            <!-- Subscription and Premium Area -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('高等工程數學')">
+                <i class="bi bi-bell"></i> 訂閱
+              </button>
+              <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal1">
+                <i class="bi bi-gem"></i> 成為 Premium
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses section py-5">
-      <div class="container">
-        <div class="row" id="course-list">
-          
-          <!-- Course 1 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1596495577886-d920f1b2de18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="高等工程數學">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">工程學科</p>
-                  <p class="price">NTU</p>
+      <!-- Course 2 --> 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200" data-school="NTHU" data-subject="it">
+        <div class="course-item">
+          <img src="https://picsum.photos/400/300" class="img-fluid" alt="Python 程式設計">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <p class="category">資訊科學</p>
+              <p class="price">NTHU</p>
+            </div>
+            <h3><a href="#">Python 程式設計</a></h3>
+            <p class="description">從基礎到進階的 Python 編程課程，涵蓋資料結構與演算法。</p>
+            <div class="trainer d-flex justify-content-between align-items-center">
+              <div class="trainer-profile d-flex align-items-center">
+                <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                <a href="#" class="trainer-link">李智賢</a>
+              </div>
+              <div class="trainer-rank d-flex align-items-center">
+                <i class="bi bi-person user-icon"></i>&nbsp;120
+                &nbsp;&nbsp;
+                <i class="bi bi-heart heart-icon"></i>&nbsp;85
+              </div>
+            </div>
+            <!-- Subscription and Premium Area -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('Python 程式設計')">
+                <i class="bi bi-bell"></i> 訂閱
+              </button>
+              <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal2">
+                <i class="bi bi-gem"></i> 成為 Premium
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 3 --> 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300" data-school="NCCU" data-subject="business">
+        <div class="course-item">
+          <img src="https://picsum.photos/400/300" class="img-fluid" alt="行銷管理">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <p class="category">商業管理</p>
+              <p class="price">NCCU</p>
+            </div>
+            <h3><a href="#">行銷管理</a></h3>
+            <p class="description">探索行銷理論與實踐，從品牌管理到數位行銷工具。</p>
+            <div class="trainer d-flex justify-content-between align-items-center">
+              <div class="trainer-profile d-flex align-items-center">
+                <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                <a href="#" class="trainer-link">張雅涵</a>
+              </div>
+              <div class="trainer-rank d-flex align-items-center">
+                <i class="bi bi-person user-icon"></i>&nbsp;80
+                &nbsp;&nbsp;
+                <i class="bi bi-heart heart-icon"></i>&nbsp;100
+              </div>
+            </div>
+            <!-- Subscription and Premium Area -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('行銷管理')">
+                <i class="bi bi-bell"></i> 訂閱
+              </button>
+              <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal3">
+                <i class="bi bi-gem"></i> 成為 Premium
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 4 --> 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400" data-school="NTNU" data-subject="arts">
+        <div class="course-item">
+          <img src="https://picsum.photos/400/300" class="img-fluid" alt="世界文學導論">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <p class="category">文學研究</p>
+              <p class="price">NTNU</p>
+            </div>
+            <h3><a href="#">世界文學導論</a></h3>
+            <p class="description">探討各國經典文學作品，從小說到詩歌，涵蓋不同文化背景。</p>
+            <div class="trainer d-flex justify-content-between align-items-center">
+              <div class="trainer-profile d-flex align-items-center">
+                <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                <a href="#" class="trainer-link">陳佳欣</a>
+              </div>
+              <div class="trainer-rank d-flex align-items-center">
+                <i class="bi bi-person user-icon"></i>&nbsp;65
+                &nbsp;&nbsp;
+                <i class="bi bi-heart heart-icon"></i>&nbsp;72
+              </div>
+            </div>
+            <!-- Subscription and Premium Area -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('世界文學導論')">
+                <i class="bi bi-bell"></i> 訂閱
+              </button>
+              <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal4">
+                <i class="bi bi-gem"></i> 成為 Premium
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 5 --> 
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="500" data-school="NCKU" data-subject="engineering">
+        <div class="course-item">
+          <img src="https://picsum.photos/400/300" class="img-fluid" alt="工程力學">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <p class="category">工程學科</p>
+              <p class="price">NCKU</p>
+            </div>
+            <h3><a href="#">
+              工程力學</a></h3>
+              <p class="description">學習力學基礎原理，探討結構設計及力的分布。</p>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                  <a href="#" class="trainer-link">林俊傑</a>
                 </div>
-                <h3><a href="#">高等工程數學</a></h3>
-                <p class="description">深入學習微積分、線性代數與微分方程等數學工具。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">張教授</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;65
-                  </div>
+                <div class="trainer-rank d-flex align-items-center">
+                  <i class="bi bi-person user-icon"></i>&nbsp;95
+                  &nbsp;&nbsp;
+                  <i class="bi bi-heart heart-icon"></i>&nbsp;82
                 </div>
+              </div>
+              <!-- Subscription and Premium Area -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('工程力學')">
+                  <i class="bi bi-bell"></i> 訂閱
+                </button>
+                <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal5">
+                  <i class="bi bi-gem"></i> 成為 Premium
+                </button>
               </div>
             </div>
           </div>
+        </div>
+  
+        <!-- Course 6 --> 
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="600" data-school="NCCU" data-subject="arts">
+          <div class="course-item">
+            <img src="https://picsum.photos/400/300" class="img-fluid" alt="心理學導論">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="category">心理學</p>
+                <p class="price">NCCU</p>
+              </div>
+              <h3><a href="#">心理學導論</a></h3>
+              <p class="description">了解心理學基本概念及其應用，探討人類行為的背後動機。</p>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                  <a href="#" class="trainer-link">陳威廷</a>
+                </div>
+                <div class="trainer-rank d-flex align-items-center">
+                  <i class="bi bi-person user-icon"></i>&nbsp;85
+                  &nbsp;&nbsp;
+                  <i class="bi bi-heart heart-icon"></i>&nbsp;90
+                </div>
+              </div>
+              <!-- Subscription and Premium Area -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('心理學導論')">
+                  <i class="bi bi-bell"></i> 訂閱
+                </button>
+                <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal6">
+                  <i class="bi bi-gem"></i> 成為 Premium
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Course 7 --> 
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="700" data-school="NTU" data-subject="science">
+          <div class="course-item">
+            <img src="https://picsum.photos/400/300" class="img-fluid" alt="生物學概論">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="category">生命科學</p>
+                <p class="price">NTU</p>
+              </div>
+              <h3><a href="#">生物學概論</a></h3>
+              <p class="description">探討生物體的基本結構與功能，從細胞到生態系統的層次分析。</p>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <img src="https://picsum.photos/50" class="img-fluid" alt="">
+                  <a href="#" class="trainer-link">邱雅玲</a>
+                </div>
+                <div class="trainer-rank d-flex align-items-center">
+                  <i class="bi bi-person user-icon"></i>&nbsp;130
+                  &nbsp;&nbsp;
+                  <i class="bi bi-heart heart-icon"></i>&nbsp;98
+                </div>
+              </div>
+              <!-- Subscription and Premium Area -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-outline-secondary" onclick="showSubscriptionNotification('生物學概論')">
+                  <
+                </button>
+                <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#premiumModal9">
+                  <i class="bi bi-gem"></i> 成為 Premium
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div> <!-- End of row -->
+    </div> <!-- End of container -->
+  </section>
+  
+  <!-- Premium Modal Templates for all courses -->
+  <!-- Premium Modal 1 -->
+  <div class="modal fade" id="premiumModal1" tabindex="-1" aria-labelledby="premiumModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="premiumModalLabel1">成為高等工程數學 Premium</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          成為 <strong>高等工程數學</strong> 讀書會的 Premium 會員需 50 點。
+          <p>目前使用者點數：<strong>150</strong> 點。</p>
+          <button class="btn btn-primary">確認購買</button>
+          <button class="btn btn-secondary">購買更多點數</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Premium Modal 2 -->
+  <div class="modal fade" id="premiumModal2" tabindex="-1" aria-labelledby="premiumModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="premiumModalLabel2">成為 Python 程式設計 Premium</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          成為 <strong>Python 程式設計</strong> 讀書會的 Premium 會員需 40 點。
+          <p>目前使用者點數：<strong>150</strong> 點。</p>
+          <button class="btn btn-primary">確認購買</button>
+          <button class="btn btn-secondary">購買更多點數</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Premium Modal 3 -->
+  <div class="modal fade" id="premiumModal3" tabindex="-1" aria-labelledby="premiumModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="premiumModalLabel3">成為行銷管理 Premium</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          成為 <strong>行銷管理</strong> 讀書會的 Premium 會員需 55 點。
+          <p>目前使用者點數：<strong>150</strong> 點。</p>
+          <button class="btn btn-primary">確認購買</button>
+          <button class="btn btn-secondary">購買更多點數</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Repeat Premium Modals for the other courses as needed... -->
+  
+  <script>
+    function showSubscriptionNotification(courseName) {
+      alert(`您已成功訂閱 ${courseName} 讀書會！`);
+    }
+  </script>
     
-          <!-- Course 2 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1581091870621-6d1e8f42129f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="Python 程式設計">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">資訊科學</p>
-                  <p class="price">NTHU</p>
-                </div>
-                <h3><a href="#">Python 程式設計</a></h3>
-                <p class="description">從基礎到進階的 Python 編程課程，涵蓋資料結構與演算法。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">李智賢</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;120
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;85
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Course 3 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="行銷管理">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">商業管理</p>
-                  <p class="price">NCCU</p>
-                </div>
-                <h3><a href="#">行銷管理</a></h3>
-                <p class="description">探索行銷理論與實踐，從品牌管理到數位行銷工具。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">張雅涵</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;80
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;100
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Course 4 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1532634988-7e29b3f7e85d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="世界文學">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">文學研究</p>
-                  <p class="price">NTNU</p>
-                </div>
-                <h3><a href="#">世界文學導論</a></h3>
-                <p class="description">探討各國經典文學作品，從小說到詩歌，涵蓋不同文化背景。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">陳佳欣</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;65
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;72
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Course 5 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="500">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1581092120334-cb28e0c0d051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="工程力學">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">工程學科</p>
-                  <p class="price">NCKU</p>
-                </div>
-                <h3><a href="#">工程力學</a></h3>
-                <p class="description">學習力學基礎原理，探討結構設計及力的分布。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">林俊傑</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;95
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;82
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Course 6 -->
-          <div class="col-lg-4
-          <!-- Course 6 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="600">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1564859224752-a22f59fc423a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="心理學導論">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">心理學</p>
-                  <p class="price">NCCU</p>
-                </div>
-                <h3><a href="#">心理學導論</a></h3>
-                <p class="description">了解心理學基本概念及其應用，探討人類行為的背後動機。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">陳威廷</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;85
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;90
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Course 7 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="700">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1518288774672-3f24f25a5e22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="生物學概論">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">生命科學</p>
-                  <p class="price">NTU</p>
-                </div>
-                <h3><a href="#">生物學概論</a></h3>
-                <p class="description">探討生物體的基本結構與功能，從細胞到生態系統的層次分析。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">邱雅玲</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;130
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;98
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Course 8 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="800">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1552072090-7dd0765cd586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="基礎物理學">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">物理學</p>
-                  <p class="price">NTHU</p>
-                </div>
-                <h3><a href="#">基礎物理學</a></h3>
-                <p class="description">學習物理學的基本原理，涵蓋運動學、動力學及電磁學。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">李教授</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;110
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;92
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Course 9 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="900">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1508963493744-76fce69379c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="解剖學">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">醫學</p>
-                  <p class="price">NCKU</p>
-                </div>
-                <h3><a href="#">解剖學基礎</a></h3>
-                <p class="description">深入探討人體解剖結構，從骨骼系統到神經系統。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">謝佳麟</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;140
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;102
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Course 10 -->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="1000">
-            <div class="course-item">
-              <img src="https://images.unsplash.com/photo-1564859224752-a22f59fc423a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="法學概論">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">法學</p>
-                  <p class="price">NCKU</p>
-                </div>
-                <h3><a href="#">法學概論</a></h3>
-                <p class="description">學習基本法律概念，涵蓋民法、刑法與商法等。</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">周偉智</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;120
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;78
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-              </div> <!-- End of row -->
-            </div> <!-- End of container -->
-          </section>
-              
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // 訂閱通知
+  function showSubscriptionNotification(courseName) {
+    var notification = document.getElementById('subscription-notification');
+    var message = document.getElementById('subscription-message');
+    message.innerText = '您已訂閱 ' + courseName + ' 讀書會！';
+    notification.style.display = 'block';
+
+    // 3秒後自動隱藏通知
+    setTimeout(function() {
+      notification.style.display = 'none';
+    }, 3000);
+  }
+</script>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
   </main>
 
@@ -413,99 +500,132 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Mentor</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p
-            New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href="#"><i class="bi bi-twitter-x"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-          </div>
+          <a
+          href="index.html" class="logo d-flex align-items-center">
+          <span class="sitename">Mentor</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
+        <div class="social-links d-flex mt-4">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Mentor</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Product Management</a></li>
+          <li><a href="#">Marketing</a></li>
+          <li><a href="#">Graphic Design</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-12 footer-newsletter">
+        <h4>Our Newsletter</h4>
+        <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+        <form action="forms/newsletter.php" method="post" class="php-email-form">
+          <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+        </form>
       </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">Mentor</strong> <span>All Rights Reserved</span></p>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you've purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </div>
+</footer>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- Preloader -->
+<div id="preloader"></div>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- 自訂 JS 用於篩選 -->
-  <script>
-    document.getElementById('school-filter').addEventListener('change', function () {
-      let schoolValue = this.value;
-      // Add logic to filter courses based on school selection
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
+
+<!-- 自訂 JS 用於篩選 -->
+<script>
+  // Function to filter courses by school and subject
+  function filterCourses() {
+    let schoolValue = document.getElementById('school-filter').value;
+    let subjectValue = document.getElementById('subject-filter').value;
+    
+    let courses = document.querySelectorAll('#course-list .course-item');
+    courses.forEach(function(course) {
+      let courseSchool = course.parentElement.getAttribute('data-school');
+      let courseSubject = course.parentElement.getAttribute('data-subject');
+      
+      let schoolMatch = (schoolValue === 'all' || schoolValue === courseSchool);
+      let subjectMatch = (subjectValue === 'all' || subjectValue === courseSubject);
+      
+      if (schoolMatch && subjectMatch) {
+        course.parentElement.style.display = 'block';
+      } else {
+        course.parentElement.style.display = 'none';
+      }
     });
+  }
 
-    document.getElementById('subject-filter').addEventListener('change', function () {
-      let subjectValue = this.value;
-      // Add logic to filter courses based on subject selection
-    });
-  </script>
+  // Event listeners for filtering
+  window.onload = function() {
+  document.getElementById('school-filter').addEventListener('change', filterCourses);
+  document.getElementById('subject-filter').addEventListener('change', filterCourses);
+};
+
+</script>
+
+
+
+ <!-- Vendor JS Files -->
+ <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="assets/vendor/php-email-form/validate.js"></script>
+ <script src="assets/vendor/aos/aos.js"></script>
+ <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+ <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+ <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Main JS File -->
+ <script src="assets/js/main.js"></script>
+
 
 </body>
 

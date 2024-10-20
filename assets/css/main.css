@@ -1886,3 +1886,11 @@ section,
 --------------------------------------------------------------*/
 
 
+.filters-section {
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  margin-bottom: 20px; /* 與課程列表之間的間距 */
+  border-bottom: 1px solid #dee2e6; /* 添加底部邊框分隔篩選區和課程 */
+}
+
+

@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,14 +26,6 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Mentor
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="courses-page">
@@ -42,19 +34,16 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">Mentor</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">首頁<br></a></li>
+          <li><a href="index.html">首頁</a></li>
           <li><a href="about.html">關於我們</a></li>
           <li><a href="courses.html">讀書會</a></li>
           <li><a href="trainers.html">創作者</a></li>
-          <!-- <li><a href="events.html">活動</a></li> -->
-          <li><a href="pricing.html" class="active">訂閱制度</a></li>
+          <li><a href="pricing.html">訂閱制度</a></li>
           <li class="dropdown"><a href="#"><span>我的帳戶</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">登入Enote/會員註冊</a></li>
@@ -74,15 +63,15 @@
                   <li><a href="#">我的頻道</a></li>
                   <li><a href="#">我的收益</a></li>
                 </ul>
-              
+              </li>
             </ul>
           </li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">聯繫我們</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
+      <a class="btn-getstarted" href="courses.html">開始學習</a>
 
     </div>
   </header>
@@ -95,8 +84,8 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>Courses</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <h1>讀書會</h1>
+              <p class="mb-0">探索各個學校及學科的讀書會，與來自不同背景的學習者交流。</p>
             </div>
           </div>
         </div>
@@ -104,35 +93,68 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Courses</li>
+            <li><a href="index.html">首頁</a></li>
+            <li class="current">讀書會</li>
           </ol>
         </div>
       </nav>
     </div><!-- End Page Title -->
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses section">
-
+    <!-- Filter Section -->
+    <section id="filters" class="filters-section py-5">
       <div class="container">
-
         <div class="row">
+          <!-- 學校篩選器 -->
+          <div class="col-md-6 mb-3">
+            <h5 class="text-primary">選擇學校</h5>
+            <select class="form-select" aria-label="學校篩選" id="school-filter">
+              <option selected>所有學校</option>
+              <option value="1">國立台灣大學 (NTU)</option>
+              <option value="2">國立清華大學 (NTHU)</option>
+              <option value="3">國立交通大學 (NCTU)</option>
+              <option value="4">國立政治大學 (NCCU)</option>
+              <option value="5">國立成功大學 (NCKU)</option>
+              <option value="6">其他</option>
+            </select>
+          </div>
 
+          <!-- 學科類型篩選器 -->
+          <div class="col-md-6 mb-3">
+            <h5 class="text-primary">選擇學科類型</h5>
+            <select class="form-select" aria-label="學科篩選" id="subject-filter">
+              <option selected>所有學科</option>
+              <option value="science">自然科學</option>
+              <option value="engineering">工程學科</option>
+              <option value="business">商業與管理</option>
+              <option value="arts">人文與社會科學</option>
+              <option value="medicine">醫學與健康科學</option>
+              <option value="it">資訊科學</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses section py-5">
+      <div class="container">
+        <div class="row" id="course-list">
+          
+          <!-- Course 1 -->
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <img src="https://images.unsplash.com/photo-1596495577886-d920f1b2de18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="高等工程數學">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Web Development</p>
-                  <p class="price">$169</p>
+                  <p class="category">工程學科</p>
+                  <p class="price">NTU</p>
                 </div>
-
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="#">高等工程數學</a></h3>
+                <p class="description">深入學習微積分、線性代數與微分方程等數學工具。</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Antonio</a>
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">張教授</a>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bi bi-person user-icon"></i>&nbsp;50
@@ -142,70 +164,252 @@
                 </div>
               </div>
             </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          </div>
+    
+          <!-- Course 2 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="course-item">
-              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
+              <img src="https://images.unsplash.com/photo-1581091870621-6d1e8f42129f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="Python 程式設計">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Marketing</p>
-                  <p class="price">$250</p>
+                  <p class="category">資訊科學</p>
+                  <p class="price">NTHU</p>
                 </div>
-
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="#">Python 程式設計</a></h3>
+                <p class="description">從基礎到進階的 Python 編程課程，涵蓋資料結構與演算法。</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Lana</a>
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">李智賢</a>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;42
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="course-item">
-              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Content</p>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Brandon</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;20
+                    <i class="bi bi-person user-icon"></i>&nbsp;120
                     &nbsp;&nbsp;
                     <i class="bi bi-heart heart-icon"></i>&nbsp;85
                   </div>
                 </div>
               </div>
             </div>
-          </div> <!-- End Course Item-->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Courses Section -->
+          </div>
+    
+          <!-- Course 3 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="行銷管理">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">商業管理</p>
+                  <p class="price">NCCU</p>
+                </div>
+                <h3><a href="#">行銷管理</a></h3>
+                <p class="description">探索行銷理論與實踐，從品牌管理到數位行銷工具。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">張雅涵</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;80
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;100
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Course 4 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1532634988-7e29b3f7e85d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="世界文學">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">文學研究</p>
+                  <p class="price">NTNU</p>
+                </div>
+                <h3><a href="#">世界文學導論</a></h3>
+                <p class="description">探討各國經典文學作品，從小說到詩歌，涵蓋不同文化背景。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">陳佳欣</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;65
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;72
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Course 5 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="500">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1581092120334-cb28e0c0d051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="工程力學">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">工程學科</p>
+                  <p class="price">NCKU</p>
+                </div>
+                <h3><a href="#">工程力學</a></h3>
+                <p class="description">學習力學基礎原理，探討結構設計及力的分布。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">林俊傑</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;95
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;82
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Course 6 -->
+          <div class="col-lg-4
+          <!-- Course 6 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="600">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1564859224752-a22f59fc423a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="心理學導論">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">心理學</p>
+                  <p class="price">NCCU</p>
+                </div>
+                <h3><a href="#">心理學導論</a></h3>
+                <p class="description">了解心理學基本概念及其應用，探討人類行為的背後動機。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">陳威廷</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;85
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;90
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Course 7 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="700">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1518288774672-3f24f25a5e22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="生物學概論">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">生命科學</p>
+                  <p class="price">NTU</p>
+                </div>
+                <h3><a href="#">生物學概論</a></h3>
+                <p class="description">探討生物體的基本結構與功能，從細胞到生態系統的層次分析。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">邱雅玲</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;130
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;98
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Course 8 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="800">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1552072090-7dd0765cd586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="基礎物理學">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">物理學</p>
+                  <p class="price">NTHU</p>
+                </div>
+                <h3><a href="#">基礎物理學</a></h3>
+                <p class="description">學習物理學的基本原理，涵蓋運動學、動力學及電磁學。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">李教授</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;110
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;92
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Course 9 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="900">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1508963493744-76fce69379c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="解剖學">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">醫學</p>
+                  <p class="price">NCKU</p>
+                </div>
+                <h3><a href="#">解剖學基礎</a></h3>
+                <p class="description">深入探討人體解剖結構，從骨骼系統到神經系統。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">謝佳麟</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;140
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;102
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Course 10 -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="1000">
+            <div class="course-item">
+              <img src="https://images.unsplash.com/photo-1564859224752-a22f59fc423a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="法學概論">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <p class="category">法學</p>
+                  <p class="price">NCKU</p>
+                </div>
+                <h3><a href="#">法學概論</a></h3>
+                <p class="description">學習基本法律概念，涵蓋民法、刑法與商法等。</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe28d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" class="img-fluid" alt="">
+                    <a href="" class="trainer-link">周偉智</a>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bi bi-person user-icon"></i>&nbsp;120
+                    &nbsp;&nbsp;
+                    <i class="bi bi-heart heart-icon"></i>&nbsp;78
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+              </div> <!-- End of row -->
+            </div> <!-- End of container -->
+          </section>
+              
 
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
-
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
@@ -214,15 +418,16 @@
           </a>
           <div class="footer-contact pt-3">
             <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
+            <p
+            New York, NY 535022</p>
             <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -258,7 +463,6 @@
             <div class="sent-message">Your subscription request has been sent. Thank you!</div>
           </form>
         </div>
-
       </div>
     </div>
 
@@ -268,11 +472,9 @@
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -291,6 +493,19 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- 自訂 JS 用於篩選 -->
+  <script>
+    document.getElementById('school-filter').addEventListener('change', function () {
+      let schoolValue = this.value;
+      // Add logic to filter courses based on school selection
+    });
+
+    document.getElementById('subject-filter').addEventListener('change', function () {
+      let subjectValue = this.value;
+      // Add logic to filter courses based on subject selection
+    });
+  </script>
 
 </body>
 

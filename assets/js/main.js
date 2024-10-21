@@ -200,5 +200,138 @@ function updateSubjects() {
   }
 }
 
+// 初始化歷史點數收益圖表
+const pointsCtx = document.getElementById('pointsChart').getContext('2d');
+const pointsChart = new Chart(pointsCtx, {
+  type: 'line', // 折線圖
+  data: {
+    labels: ['2024-06', '2024-07', '2024-08', '2024-09', '2024-10'], // X 軸數據
+    datasets: [{
+      label: '每月點數收益',
+      data: [60, 75, 85, 90, 120], // Y 軸數據
+      borderColor: '#5fcf80',
+      fill: false
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+// 初始化訂閱人數圖表 (區分 Premium 訂閱和免費訂閱)
+const subscriberCtx = document.getElementById('subscriberChart').getContext('2d');
+const subscriberChart = new Chart(subscriberCtx, {
+  type: 'bar', // 柱狀圖
+  data: {
+    labels: ['2024-06', '2024-07', '2024-08', '2024-09', '2024-10'], // X 軸數據
+    datasets: [{
+      label: 'Premium 訂閱',
+      data: [30, 40, 50, 60, 70], // Premium 訂閱數據
+      backgroundColor: '#5fcf80'
+    }, {
+      label: '免費訂閱',
+      data: [50, 60, 65, 70, 80], // 免費訂閱數據
+      backgroundColor: '#007bff'
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+// 點數兌換功能
+let totalPoints = 120; // 當前點數設定為120，超過100
+const redeemBtn = document.getElementById('redeem-points-btn');
+const progressBar = document.querySelector('.progress-bar');
+const redeemAmountInput = document.getElementById('redeem-amount');
+const pointsDisplay = document.querySelector('.progress-bar'); // 點數顯示的元素
+
+// 當點數超過 100 時，啟用兌換按鈕
+redeemBtn.disabled = totalPoints < 100 ? true : false;
+
+// 監聽「確認兌換」按鈕的點擊事件
+document.querySelector('.btn-primary').addEventListener('click', function () {
+  const redeemAmount = parseInt(redeemAmountInput.value); // 取得使用者輸入的點數
+  
+  if (redeemAmount > 0 && redeemAmount <= totalPoints) {
+    totalPoints -= redeemAmount; // 更新點數
+    updateProgressBar(totalPoints); // 更新進度條
+    // 隱藏模態窗
+    const modal = bootstrap.Modal.getInstance(document.getElementById('redeemModal'));
+    modal.hide();
+  } else {
+    alert('請輸入有效的點數數量');
+  }
+});
+
+// 更新進度條和點數顯示的函式
+function updateProgressBar(points) {
+  const percentage = (points / 100) * 100;
+  progressBar.style.width = `${percentage}%`; // 更新進度條寬度
+  progressBar.textContent = `${points}/100 點數`; // 更新進度條上的文字
+  redeemBtn.disabled = points < 100 ? true : false; // 根據新的點數狀態，更新按鈕狀態
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const users = [
+    { name: '小明', subject: '數學', interest: '編程' },
+    { name: '小美', subject: '物理', interest: '讀書' },
+    { name: '小華', subject: '化學', interest: '運動' },
+    { name: '阿強', subject: '歷史', interest: '音樂' },
+    { name: '小李', subject: '語言學', interest: '讀書' }
+  ];
+
+  // 當點擊 "開始配對" 按鈕
+  document.getElementById('pairButton').addEventListener('click', function () {
+        alert('已經開始配對了');
+
+    const selectedSubject = document.getElementById('subjectSelect').value;
+    const selectedInterest = document.getElementById('interestSelect').value;
+
+    // 進行條件篩選
+    const matchedUser = users.find(user => {
+      const subjectMatch = selectedSubject === 'all' || user.subject === selectedSubject;
+      const interestMatch = selectedInterest === 'all' || user.interest === selectedInterest;
+      return subjectMatch && interestMatch;
+    });
+
+    // 顯示配對結果
+    if (matchedUser) {
+      document.getElementById('matchedUser').textContent = `已匹配到: ${matchedUser.name} (${matchedUser.subject}, ${matchedUser.interest})`;
+      document.getElementById('pairingResult').style.display = 'block';
+    } else {
+      document.getElementById('matchedUser').textContent = '無法根據條件找到匹配對象。';
+      document.getElementById('pairingResult').style.display = 'block';
+    }
+  });
+
+  // 當點擊 "加好友" 按鈕
+  document.getElementById('addFriendBtn').addEventListener('click', function () {
+    alert('你已加對方為好友！');
+    resetPage();
+  });
+
+  // 當點擊 "跳過" 按鈕
+  document.getElementById('skipFriendBtn').addEventListener('click', function () {
+    alert('你跳過了此次配對！');
+    resetPage();
+  });
+
+  // 重置頁面
+  function resetPage() {
+    document.getElementById('pairingResult').style.display = 'none';
+    document.getElementById('subjectSelect').value = 'all';
+    document.getElementById('interestSelect').value = 'all';
+  }
+});
 
 

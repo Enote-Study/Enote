@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About - Enote</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Mentor
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <h1 class="sitename">Enote</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html">首頁<br></a></li>
+              <li><a href="about.html">關於我們</a></li>
+              <li><a href="courses.html">讀書會</a></li>
+              <li><a href="trainers.html">創作者</a></li>
+              <!-- <li><a href="events.html">活動</a></li> -->
+              <li><a href="pricing.html" class="active">訂閱制度</a></li>
+              <li class="dropdown"><a href="#"><span>我的帳戶</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">登入Enote/會員註冊</a></li>
+                  <li><a href="bonus_point.html">會員點數</a></li>
+    
+                  <li class="dropdown"><a href="#"><span>學習者</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                      <li><a href="mylearning.html">我的學習</a></li>
+                      <li><a href="subscribed.html">訂閱管理</a></li>
+                      <li><a href="ppt.html">簡報模式</a></li>
+                    </ul>
+                  </li>
+    
+                  <li class="dropdown"><a href="#"><span>創作者</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                      <li><a href="#">上傳資源</a></li>
+                      <li><a href="#">我的頻道</a></li>
+                      <li><a href="myrevenue.html">我的收益</a></li>
+                    </ul>
+                  
+                </ul>
+              </li>
+              <li><a href="contact.html">聯絡我們</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+    
+          <a class="btn-getstarted" href="courses.html">Get Started</a>
+    
+        </div>
+      </header>
+<div class="container mt-5">
+    
+  <h1 class="text-center mb-5">配對模式</h1>
+  
+
+  <div class="row mb-4">
+    <!-- 你的分享形式選擇 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="bi bi-file-earmark-text-fill"></i> 選擇你的分享形式
+          </h5>
+          <select class="form-select mt-3" id="myResourceSelect">
+            <option value="簡報">簡報</option>
+            <option value="筆記">筆記</option>
+            <option value="視頻">視頻</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 你的學科類型選擇 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="bi bi-journal-bookmark-fill"></i> 選擇你的學科類型
+          </h5>
+          <select class="form-select mt-3" id="mySubjectSelect">
+            <option value="數學">數學</option>
+            <option value="物理">物理</option>
+            <option value="化學">化學</option>
+            <option value="語言學">語言學</option>
+            <option value="歷史">歷史</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 我的學習資料庫 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="bi bi-folder-fill"></i> 我的學習資料庫
+          </h5>
+          <button class="btn btn-success w-100 mt-3" id="myLibraryBtn">
+            <i class="bi bi-folder"></i> 查看資料庫
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 配對方式選擇 -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <button class="btn btn-primary w-100" id="autoPairBtn">
+        <i class="bi bi-shuffle"></i> 系統自動配對
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-secondary w-100" id="conditionPairBtn">
+        <i class="bi bi-funnel"></i> 條件配對
+      </button>
+    </div>
+  </div>
+  
+
+  <!-- 條件配對選項 -->
+  <div id="conditionSelect" class="mb-4" style="display: none;">
+    <h4>選擇你想聽的分享條件</h4>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="otherResourceSelect" class="form-label">選擇對方的分享形式:</label>
+        <select class="form-select" id="otherResourceSelect">
+          <option value="all">所有形式</option>
+          <option value="簡報">簡報</option>
+          <option value="筆記">筆記</option>
+          <option value="視頻">影片</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="otherSubjectSelect" class="form-label">選擇對方的學科類型:</label>
+        <select class="form-select" id="otherSubjectSelect">
+          <option value="all">所有學科</option>
+          <option value="數學">數學</option>
+          <option value="物理">物理</option>
+          <option value="化學">化學</option>
+          <option value="語言學">語言學</option>
+          <option value="歷史">歷史</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-success" id="startConditionPairBtn"><i class="bi bi-search"></i> 開始條件配對</button>
+  </div>
+<!-- 配對中的動畫 -->
+<div id="pairingAnimation" class="d-flex justify-content-center align-items-center mb-3" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">配對中...</span>
+    </div>
+    <strong class="ms-3">配對中...</strong>
+</div>
+
+  
+  <!-- 配對結果 -->
+  <div class="card p-4 shadow-lg border-0" id="pairingResult" style="display: none;">
+    <h4 class="text-center mb-4">配對結果</h4>
+    <div class="d-flex justify-content-between align-items-center">
+        <!-- 你的頭像 -->
+        <div class="text-center">
+            <img src="assets/img/user/ex.jpg" alt="Your Avatar" class="rounded-circle border border-primary shadow-sm" width="100" height="100">
+            <p c
+            lass="mt-2 mb-0">你</p>
+        </div>
+        <!-- 配對到的用戶資訊 -->
+        <div class="text-center">
+            <p id="matchedUser" class="mb-1 fs-4 fw-bold">已匹配到: 小華 (視頻)</p>
+        </div>
+        <!-- 對方的頭像 -->
+        <div class="text-center">
+            <img src="assets/img/user/爽課.png" alt="Matched User Avatar" class="rounded-circle border border-primary shadow-sm" width="100" height="100">
+            <p class="mt-2 mb-0">小華</p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <button class="btn btn-success btn-lg" id="confirmPairBtn">
+            <i class="bi bi-check-circle"></i> 確認
+        </button>
+    </div>
+</div>
+
+
+  <!-- 浮動視窗顯示配對詳情 -->
+  <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareModalLabel">分享細節</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="text-center">
+              <img src="assets/img/user/ex.jpg" alt="Your Avatar" class="rounded-circle mb-2" width="200" height="200">
+              <p><strong>你的分享形式:</strong> <span id="yourResource"></span></p>
+            </div>
+            <div class="text-center">
+              <img src="assets/img/user/爽課.png" alt="Matched User Avatar" class="rounded-circle mb-2" width="200" height="200">
+              <p><strong>對方的分享形式:</strong> <span id="matchedResource"></span></p>
+            </div>
+          </div>
+          <p>倒計時: <span id="timeRemaining">300</span> 秒</p>
+          <div class="progress">
+            <div class="progress-bar" id="progressBar" role="progressbar" style="width: 100%">300s</div>
+          </div>
+          <button class="btn btn-primary mt-3" id="voiceChatBtn"><i class="bi bi-mic-fill"></i> 開啟語音分享</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/pair.js"></script>
+</body>
+</html>

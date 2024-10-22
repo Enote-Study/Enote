@@ -1,0 +1,43 @@
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    border-radius: 15px;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #6a11cb;
+  }
+  
+  .btn-primary {
+    background-color: #6a11cb;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2575fc;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .hidden-form {
+    display: none;
+  }
+  
+  .active-form {
+    display: block;
+  }
+  

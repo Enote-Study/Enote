@@ -1983,3 +1983,21 @@ section,
     font-size: 1.25rem;
     color: #495057;
 }
+
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.hidden-form {
+  display: none;
+}
+
+.active-form {
+  display: block;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #6a11cb;
+}

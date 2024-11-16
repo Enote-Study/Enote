@@ -38,52 +38,26 @@
 
 <body class="about-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <!-- 導覽列占位符 -->
+<div id="header-placeholder"></div>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">Enote</h1>
-      </a>
+<!-- JavaScript 用於引入 header.html -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch('C:\Users\yukiy\OneDrive\Desktop\創創入門\Enote\header.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Header file not found: " + response.statusText);
+        }
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  });
+</script>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">首頁<br></a></li>
-          <li><a href="about.html">關於我們</a></li>
-          <li><a href="courses.html">讀書會</a></li>
-          <li><a href="trainers.html">創作者</a></li>
-          <!-- <li><a href="events.html">活動</a></li> -->
-          <li><a href="pricing.html" class="active">訂閱制度</a></li>
-          <li class="dropdown"><a href="#"><span>我的帳戶</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="register.html">登入Enote/會員註冊</a></li>
-              <li><a href="bonus_point.html">會員點數</a></li>
-
-              <li class="dropdown"><a href="#"><span>學習者</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="mylearning.html">我的學習</a></li>
-                  <li><a href="subscribed.html">訂閱管理</a></li>
-                  <li><a href="ppt.html">簡報模式</a></li>
-                </ul>
-              </li>
-
-              <li class="dropdown"><a href="#"><span>創作者</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">上傳資源</a></li>
-                  <li><a href="#">我的頻道</a></li>
-                  <li><a href="myrevenue.html">我的收益</a></li>
-                </ul>
-              
-            </ul>
-          </li>
-          <li><a href="contact.html">聯絡我們</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
-
-    </div>
-  </header>
 
   <main class="main">
 

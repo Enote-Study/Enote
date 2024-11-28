@@ -32,9 +32,10 @@
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
   /**
+   *   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
    * Hide mobile nav on same-page/hash links
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
@@ -333,5 +334,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('interestSelect').value = 'all';
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const footerPlaceholder = document.getElementById("footer-placeholder");
+
+  if (footerPlaceholder) {
+      fetch("footer.html")
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error("Failed to fetch footer.html: " + response.statusText);
+              }
+              return response.text();
+          })
+          .then(data => {
+              footerPlaceholder.innerHTML = data;
+              console.log("Footer loaded successfully.");
+          })
+          .catch(error => {
+              console.error("Error loading footer:", error);
+          });
+  } else {
+      console.error("Footer placeholder not found!");
+  }
+});
+
+
+
+
 
 
